@@ -37,3 +37,12 @@ for i in array:
 - 3. 문제해결을 위한 아이디어 찾기
 - 4. 소스코드 설계 및 코딩
 
+
+### 수행시간 측정 소스코드
+```python
+import time
+start_time = time.time()
+'''문제풀이'''
+end_time = time.time()
+print("time:" ,end_time - start_time)
+```
