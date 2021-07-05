@@ -1,5 +1,5 @@
 # coTe
-coding Test practice
+coding Test practice 
 
 ## 복잡도: 알고리즘의 성능을 나타내는 척도
 - **시간복잡도**: 특정한 크기의 입력에 대하여 알고리즘의 수행시간 분석
