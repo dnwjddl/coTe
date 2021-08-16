@@ -14,3 +14,6 @@ int main(void){
   }
   cout << cnt << '\n';
 }
+
+// namespace : namespace란 클래스나 구조체 그리고 함수나 변수를 식별하는 사용하는 논리적인 공간
+// c++ 화면 출력 방법:  cout << "Hello World" << end;
