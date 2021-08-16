@@ -305,3 +305,56 @@ print(list(result)) #[7,9,11,13,15]
 - collections: 덱(deque), 카운터(Counter)등의 유용한 자료구조 포함
 - math: 필수적인 수학적 기능
  - 팩토리얼, 제곱근, 최대공약수(GCD), 삼각함수 파이(pi)
+
+
+### 순열과 조합
+- 순열
+  - 서로 다른 n개에서 서로 다른 r개를 선택하여 일렬로 나열하는 것
+  - nPr = n * (n-1) * (n-2) * ... * (n-r+1)
+- 조합
+  - 서로 다른 n개에서 **순서에 상관 없이** 서로 다른 r개를 선택하는 것
+  - nCr = n * (n-1) * (n-2) * ... * (n-r+1) / r!
+
+```python
+# 순열
+from itertools import permutations
+data = ['A', 'B', 'C']
+result = list(permutations(data, 3)) # 모든 순열 구하기
+print(result)  #[('A', 'B', 'C'), ('A', 'C', 'B'), ('B', 'A', 'C')..]
+
+# 조합
+from itertools import combinations
+data = ['A', 'B', 'C']
+result = list(combinations(data, 2)) #2개를 뽑는 모든 조합 구하기
+print(result) #[('A', 'B'), ('B','C'), ('A', 'C')]
+```
+
+```python
+# 중복 순열
+from itertools import product
+data = ['A','B','C']
+result = list(product(data, repeat = 2)) # 2개를 뽑는 모든 순열 구하기 (중복허용)
+
+# 중복 조합
+from itertools import combinations_with_replacement
+data = ['A', 'B', 'C']
+result = list(combinations_with_replacement(data,2)) # 2개를 뽑는 모든 조합 구하기 (중복 허용)
+```
+
+### Counter
+```python
+from collections import Counter
+counter = Counter(['red', 'blue', 'red', 'green', 'blue', 'blue'])
+print(counter['blue']) #3
+print(dict(counter))
+```
+
+### 최대 공약수와 최소 공배수
+```python
+import math
+#최소 공배수(LCM)를 구하는 함수
+def lcm(a, b):
+  return a*b//math.gcd(a,b)
+print(math.gcd(a,b)) #최대공약수(GCD)
+print(lcm(a,b)) #최소공배수(LCM)
+```
