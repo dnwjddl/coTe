@@ -315,6 +315,9 @@ print(list(result)) #[7,9,11,13,15]
   - 서로 다른 n개에서 **순서에 상관 없이** 서로 다른 r개를 선택하는 것
   - nCr = n * (n-1) * (n-2) * ... * (n-r+1) / r!
 
+- 주의
+  - ```combinations```, ```permutations```, ```product``` 세 메소드 모두 generator이기 때문에 list() 로 캐스팅하여 다른 곳에 저장해두지 않으면 사라짐
+
 ```python
 # 순열
 from itertools import permutations
@@ -334,6 +337,7 @@ print(result) #[('A', 'B'), ('B','C'), ('A', 'C')]
 from itertools import product
 data = ['A','B','C']
 result = list(product(data, repeat = 2)) # 2개를 뽑는 모든 순열 구하기 (중복허용)
+# AA, AB, AC, BB, BA, ..
 
 # 중복 조합
 from itertools import combinations_with_replacement
