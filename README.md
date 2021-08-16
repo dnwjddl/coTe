@@ -17,6 +17,8 @@
 - [조건문과 반복문](#조건문과-반복문)
   - [조건문](#조건문)
   - [반복문](#반복문)
+- [함수](#함수)
+- [표준 라이브러리](#표준-라이브러리)
 
 ---
 
@@ -243,3 +245,61 @@ print(f'정답은 {answer}입니다.')
 ### 반복문
 - 특정한 소스코드를 반복적으로 실행하고자 할 때 사용하는 문법
 - ```while```혹은 ```for```문
+
+## 함수
+- 내장함수: 파이썬이 기본적으로 제공하는 함수
+- 사용자 정의 함수: 개발자가 직접 정의하여 사용할 수 있는 함수
+
+### global 키워드
+global 키워드로 변수를 지정하면 해당 함수에서는 지역변수를 만들지 않고, **함수 바깥에 선언된 변수를 바로 참조**하게 됨
+```python
+a = 0
+def func():
+  global a
+  a += 1
+
+for i in range(10):
+  func()
+print(a) # 10
+# 지역변수라면 1임
+```
+
+### 람다 표현식
+```python
+def add(a, b):
+  return a+b
+print(add(3, 7))
+print((lambda a,b: a+b)(3, 7))
+```
+
+```python
+array = [('홍길동', 50), ('이순신', 32), ('아무개', 74)]
+def my_key(x):
+  return x[1]
+print(sorted(array, key = my_key))
+print(sorted(array, key = lambda x: x[1]))
+```
+
+```python
+list1 = [1,2,3,4,5]
+list2 = [6,7,8,9,10]
+
+result = map(lambda a, b: a+b, list1, list2)
+# a = list(map(int, a))
+# a = list(map(str, range(10)))
+# map(적용시킬 함수, 적용할 값들)
+# list(map(lambda x: x*2, [5,4,3,2,1]))
+print(list(result)) #[7,9,11,13,15]
+```
+
+## 표준 라이브러리
+- 내장 함수: 기본 입출력 함수부터 정렬 함수까지 기본적인 함수들
+- itertools: 파이썬에서 반복되는 형태의 데이터를 처리하기 위한 유용한 기능들 제공
+  - 순열과 조합 라이브러리
+- headpq: Heap(힙) 자료구조를 제공
+  - 우선순위 큐 기능을 구현하기 위함
+  - 최단경로
+- bisect: 이진 탐색(Binary Search) 기능을 제공
+- collections: 덱(deque), 카운터(Counter)등의 유용한 자료구조 포함
+- math: 필수적인 수학적 기능
+ - 팩토리얼, 제곱근, 최대공약수(GCD), 삼각함수 파이(pi)
