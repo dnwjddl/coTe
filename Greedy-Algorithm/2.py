@@ -34,10 +34,11 @@ print(cnt)
 N의 값을 줄일때 2이상의 수로 나누는걸 우선 해봄 -> 안되면 -1
 - 가능한 최대한 많이 나누는 작업 : 최적의 해
 '''
-
 n, k = map(int, input().split())
 result = 0
 while True:
+   # 1을 빼주는 의미로 하는 것이 아닌
+   # target을 먼저 찾는다 (계산을 통해)
    target = (n//k) * k
    result += (n-target)
    n = target
