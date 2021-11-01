@@ -90,3 +90,25 @@ for plan in plans:
 
 print(x, y)
 ```
+
+
+```python
+#왕실의 나이트 체스문제
+# a1 (1,1)
+# b1 (1,2)
+
+## 문자를 숫자로 바꾸기
+column = int(ord(input_data[0])) - int(ord('a')) + 1
+
+# 나이트가 이동할 수 있는 방향 정의
+steps = [(-2, -1), (-1, -2), (1, -2), (2, -1), (2,1) ,(1,2), (-1,2), (-2,1)]
+
+result = 0
+for step in stpes:
+  next_row = row+step[0]
+  next_colum = colum + step[1]
+  
+  # 해당 위치로 이동가능하다면 카운트 증가
+  if next_row >= 1 and next_row <= 9 and next_colum >=1 and next_column <= 8:
+    result += 1
+```
