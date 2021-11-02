@@ -66,6 +66,10 @@ def gcd(a,b):
 
 print(gcd(192, 162))
 ```
+|알고리즘|사용|방법|
+|:----:|-----|-----|
+|DFS|경로의 특징을 저장해야되는 가중치 있는 문제 && 그래프가 크면|스택&재귀|
+|BFS|미로찾기등 가장 짧은, 가장 빠른/간선의 비용들이 모두 같을 때|큐|
 
 ## DFS
 ### Depth-First Search
@@ -150,6 +154,9 @@ bfs(graph, 1, visited)
 1. 1,0으로만 채워진 2차원 행렬이 주어지고 0으로 묶을 수 있는 그룹의 수를 구하여라
 
 ```python
+## graph 2차원 배열 내에 1,0
+
+# 모든 노드(위치)에 대하여 음료수 채우기
 for i in range(n):
   for j in range(m):
     #현재 위치에서 DFS 수행
@@ -157,9 +164,13 @@ for i in range(n):
       result += 1
 print(result)
 
+## Visit하면 False로 바꿈
+## True로 하나 추출하면 옆에 Graph되는 것들은 모두 False로
 def dfs(x, y):
+  # 주어진 범위를 벗어나는 경우에는 즉시 종료
   if x<= -1 or x>=n or y <= -1 or y>= m:
     return False
+  # 현재 노드를 아직 방문하지 않았다면
   if graph[x][y] == 0:
     #해당 노드 방문 처리
     graph[x][y] = 1
@@ -171,4 +182,47 @@ def dfs(x, y):
     return True
  return False
 
+```
+2. 미로 찾기
+동빈이가 N x M 크기의 직사각형 형태의 미로에 갇혔는데 미로에는 여러 마리의 괴물이 있음  
+동빈이의 위치는 (1,1)이고 미로의 출구는 (N, M)의 위치에 존재하며 한 번에 한 칸씩 이동할 수 있음  
+이때 괴물이 있는 부분이 0, 없는 부분이 1로 표시  
+동빈이가 탈출하기 위해 움직여야 하는 최소 칸의 개수  
+- 하나씩 더해서 마지막 노드까지 가기
+- 계속 수행해서 결과적으로 최단 경로의 값들이 1씩 증가하는 형태를 만듦
+
+```python
+from collections import deque
+
+def bfs(x, y):
+  queue = deque()
+  # 첫 (x,y) 방문
+  queue.append((x,y))
+  # 큐가 빌 때까지 반복
+  while queue:
+    x, y = queue.popleft()
+    # 현재 위치에서 4가지 방향으로의 위치 확인
+    for i in range(4):
+      nx = x+dx[i]
+      ny = y+dy[i]
+      # 미로 찾기 공간을 벗어난 경우 무시
+      if nx <0 or nx>= n or ny <0 or ny >= m:
+        continue
+      # 벽인 경우 무시
+      if graph[nx][ny] == 0:
+        continue
+      # 해당 노드를 처음 방문하는 경우에만 최단 거리 기록
+      if graph[nx][ny] == 1:
+        graph[nx][ny] = graph[x][y] + 1
+        queue.append((nx, ny))
+       
+  # 가장 오른쪽 아래까지의 최단 거리 반환
+  return graph[n-1][m-1]
+
+# 이동할 네 가지 방향 정의(상, 하, 좌, 우)
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+# BFS를 수행한 결과 출력
+print(dfs(0, 0))
 ```
