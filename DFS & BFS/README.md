@@ -1,10 +1,3 @@
-- [DFS & BFS](#DFS&BFS)  
-  - [자료구조](#자료구조)
-    - [스택 자료구조](#스택-자료구조)
-    - [큐 자료구조](#큐-자료구조)  
-  - [재귀함수](#재귀함수)
-    - 유클리드호제법
-  - [DFS](#DFS(Depth-First-Search)
 # DFS&BFS
 그래프 탐색 알고리즘  
 - [DFS & BFS](#DFS&BFS)  
@@ -13,7 +6,7 @@
     - [큐 자료구조](#큐-자료구조)  
   - [재귀함수](#재귀함수)
     - 유클리드호제법
-  - [DFS](#DFS(Depth-First-Search)
+  - [DFS](#DFS(Depth-First-Search))
 
 - **탐색(Search)** 란, 많은 양의 데이터 중에서 원하는 데이터를 찾는 과정
 - 대표적 DFS, BFS
